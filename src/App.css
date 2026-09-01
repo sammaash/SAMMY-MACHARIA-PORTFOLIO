@@ -132,7 +132,7 @@ p {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 70px;
+  min-height: 76px;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
@@ -141,14 +141,28 @@ p {
 .logo {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: 1.3rem;
-  font-weight: 700;
   color: var(--primary-color);
+  min-width: 0;
 }
 
-.logo-icon {
-  font-size: 1.8rem;
+.logo-text,
+.logo-specialties {
+  display: block;
+}
+
+.logo-text {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.2;
+}
+
+.logo-specialties {
+  color: var(--text-light);
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1.35;
+  margin-top: 3px;
 }
 
 .nav {
@@ -433,6 +447,16 @@ section {
   font-size: 1.3rem;
 }
 
+.project-category,
+.case-study-category {
+  color: var(--accent-color);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04rem;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
 .project-description {
   font-size: 15px;
   margin-bottom: 20px;
@@ -496,6 +520,93 @@ section {
 .link-btn:hover {
   background-color: var(--primary-color);
   color: white;
+}
+
+.link-btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+  cursor: pointer;
+}
+
+.link-btn-primary:hover {
+  background-color: var(--secondary-color);
+}
+
+.btn-disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+  pointer-events: none;
+}
+
+.case-study-page {
+  background-color: #f5f7fa;
+  min-height: 100vh;
+  padding: 72px 20px;
+}
+
+.case-study-container {
+  max-width: 960px;
+}
+
+.back-link {
+  background: none;
+  border: none;
+  color: var(--primary-color);
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 44px;
+  padding: 0;
+}
+
+.back-link:hover {
+  color: var(--secondary-color);
+}
+
+.case-study-page h1 {
+  margin-bottom: 14px;
+}
+
+.case-study-lead {
+  font-size: 1.15rem;
+  max-width: 720px;
+}
+
+.case-study-grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 42px 0 32px;
+}
+
+.case-study-grid article {
+  background: white;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 24px;
+}
+
+.case-study-grid h2 {
+  color: var(--primary-color);
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+.case-study-grid p {
+  font-size: 0.96rem;
+}
+
+.case-study-actions {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.source-link {
+  color: var(--primary-color);
+  font-size: 0.95rem;
+  font-weight: 600;
 }
 
 /* Data Storytelling Section */
@@ -664,6 +775,14 @@ section {
   flex-direction: column;
   align-items: center;
   gap: 0;
+  width: 100%;
+}
+
+.progression-flow > div {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 .progression-step {
@@ -678,9 +797,13 @@ section {
 }
 
 .progression-arrow {
+  display: block;
   font-size: 2rem;
   color: var(--primary-color);
+  line-height: 1;
   padding: 8px 0;
+  text-align: center;
+  width: 100%;
 }
 
 /* About Section */
@@ -854,13 +977,13 @@ section {
 
   .nav {
     position: absolute;
-    top: 70px;
+    top: 76px;
     left: 0;
     right: 0;
     background-color: white;
     flex-direction: column;
     gap: 0;
-    padding: 20px;
+    padding: 0 20px;
     border-bottom: 1px solid var(--border-color);
     max-height: 0;
     overflow: hidden;
@@ -869,6 +992,7 @@ section {
 
   .nav.active {
     max-height: 400px;
+    padding: 20px;
   }
 
   .nav-link {
@@ -878,6 +1002,18 @@ section {
 
   .hero {
     padding: 60px 20px 50px;
+  }
+
+  .header-inner {
+    min-height: 70px;
+  }
+
+  .logo-text {
+    font-size: 1rem;
+  }
+
+  .logo-specialties {
+    font-size: 0.62rem;
   }
 
   section {
@@ -936,6 +1072,25 @@ section {
     min-width: auto;
     font-size: 14px;
     padding: 12px 20px;
+  }
+
+  .case-study-page {
+    padding: 48px 20px;
+  }
+
+  .case-study-grid {
+    grid-template-columns: 1fr;
+    margin-top: 32px;
+  }
+
+  .case-study-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .case-study-actions .btn,
+  .source-link {
+    text-align: center;
   }
 
   .stat-value {

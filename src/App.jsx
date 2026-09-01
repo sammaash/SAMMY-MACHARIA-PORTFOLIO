@@ -1,9 +1,28 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import { portfolioData } from './data/portfolio'
 
 function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [caseStudyId, setCaseStudyId] = useState(() => window.location.hash.replace('#/work/', ''))
+
+  const projects = [portfolioData.featuredProject, ...portfolioData.dataProjects]
+  const activeProject = projects.find((project) => project.id === caseStudyId)
+
+  useEffect(() => {
+    const updateRoute = () => setCaseStudyId(window.location.hash.replace('#/work/', ''))
+    window.addEventListener('hashchange', updateRoute)
+    return () => window.removeEventListener('hashchange', updateRoute)
+  }, [])
+
+  const openCaseStudy = (projectId) => {
+    window.location.hash = `/work/${projectId}`
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
+  const backToWork = () => {
+    window.location.hash = 'featured'
+  }
 
   const scrollToSection = (sectionId) => {
     setMobileMenuOpen(false)
@@ -13,14 +32,49 @@ function App() {
     }
   }
 
+  if (activeProject) {
+    return (
+      <main className="case-study-page">
+        <div className="container case-study-container">
+          <button className="back-link" onClick={backToWork}>← Back to Work</button>
+          <p className="case-study-category">{activeProject.category}</p>
+          <h1>{activeProject.title}</h1>
+          <p className="case-study-lead">{activeProject.description}</p>
+
+          <div className="case-study-grid">
+            <article><h2>Business Problem</h2><p>{activeProject.businessProblem}</p></article>
+            <article><h2>Objective</h2><p>{activeProject.caseStudy.objective}</p></article>
+            <article><h2>Solution / Approach</h2><p>{activeProject.solution}</p></article>
+            <article><h2>Process / Methodology</h2><p>{activeProject.caseStudy.process}</p></article>
+            <article><h2>Key Findings or Results</h2><p>{activeProject.caseStudy.findings}</p></article>
+            <article><h2>Business Value</h2><p>{activeProject.businessValue}</p></article>
+            <article><h2>Technology / Tools</h2><div className="tag-list">{(activeProject.technologies || activeProject.skills).map((tool) => <span key={tool} className="tag">{tool}</span>)}</div></article>
+            <article><h2>Limitations</h2><p>{activeProject.caseStudy.limitations}</p></article>
+          </div>
+
+          <div className="case-study-actions">
+            {activeProject.demoAvailable ? (
+              <a href={activeProject.liveDemo} target="_blank" rel="noopener noreferrer" className="btn btn-secondary">Live Demo</a>
+            ) : (
+              <span className="btn btn-disabled" aria-disabled="true">Demo coming soon</span>
+            )}
+            <a href={activeProject.github} target="_blank" rel="noopener noreferrer" className="source-link">View Source on GitHub</a>
+          </div>
+        </div>
+      </main>
+    )
+  }
+
   return (
     <>
       {/* Header/Navigation */}
       <header className="header" id="home">
         <div className="header-inner">
           <div className="logo">
-            <span className="logo-icon">⚡</span>
-            <span className="logo-text">Digital Solutions</span>
+            <div>
+              <span className="logo-text">SAMMY MACHARIA</span>
+              <span className="logo-specialties">AI Automation · Data Analytics · Data Storytelling</span>
+            </div>
           </div>
 
           <button
@@ -34,23 +88,17 @@ function App() {
           </button>
 
           <nav className={`nav ${mobileMenuOpen ? 'active' : ''}`}>
+            <button onClick={() => scrollToSection('featured')} className="nav-link">
+              Work
+            </button>
             <button onClick={() => scrollToSection('services')} className="nav-link">
               Services
-            </button>
-            <button onClick={() => scrollToSection('featured')} className="nav-link">
-              Featured Work
-            </button>
-            <button onClick={() => scrollToSection('projects')} className="nav-link">
-              Projects
-            </button>
-            <button onClick={() => scrollToSection('data-storytelling')} className="nav-link">
-              Data Storytelling
             </button>
             <button onClick={() => scrollToSection('about')} className="nav-link">
               About
             </button>
-            <button onClick={() => scrollToSection('contact')} className="nav-link cta-nav">
-              Get In Touch
+            <button onClick={() => scrollToSection('contact')} className="nav-link">
+              Contact
             </button>
           </nav>
         </div>
@@ -115,7 +163,7 @@ function App() {
 
               <div className="project-case-study">
                 <div className="case-study-item">
-                  <h4>Problem</h4>
+                  <h4>Business Problem</h4>
                   <p>{portfolioData.featuredProject.businessProblem}</p>
                 </div>
 
@@ -151,22 +199,8 @@ function App() {
               </div>
 
               <div className="project-ctas">
-                <a
-                  href={portfolioData.featuredProject.liveDemo}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-primary"
-                >
-                  Live Demo →
-                </a>
-                <a
-                  href={portfolioData.featuredProject.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-secondary"
-                >
-                  View GitHub
-                </a>
+                <button className="btn btn-primary" onClick={() => openCaseStudy(portfolioData.featuredProject.id)}>View Case Study</button>
+                {portfolioData.featuredProject.demoAvailable ? <a href={portfolioData.featuredProject.liveDemo} target="_blank" rel="noopener noreferrer" className="btn btn-secondary">Live Demo</a> : <span className="btn btn-secondary btn-disabled">Demo coming soon</span>}
               </div>
             </div>
           </div>
@@ -187,9 +221,20 @@ function App() {
             {portfolioData.dataProjects.map((project) => (
               <div key={project.id} className="project-card">
                 <div className="project-card-header">
+                  <p className="project-category">{project.category}</p>
                   <h3>{project.title}</h3>
                 </div>
                 <p className="project-description">{project.description}</p>
+
+                <div className="project-detail">
+                  <strong>Business Problem:</strong>
+                  <p>{project.businessProblem}</p>
+                </div>
+
+                <div className="project-detail">
+                  <strong>Solution:</strong>
+                  <p>{project.solution}</p>
+                </div>
 
                 <div className="project-value">
                   <strong>Business Value:</strong>
@@ -207,24 +252,8 @@ function App() {
                 </div>
 
                 <div className="project-links">
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="link-btn"
-                  >
-                    View GitHub →
-                  </a>
-                  {project.liveDemo && (
-                    <a
-                      href={project.liveDemo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="link-btn"
-                    >
-                      Live Demo →
-                    </a>
-                  )}
+                  <button className="link-btn link-btn-primary" onClick={() => openCaseStudy(project.id)}>View Case Study</button>
+                  {project.demoAvailable ? <a href={project.liveDemo} target="_blank" rel="noopener noreferrer" className="link-btn">Live Demo</a> : <span className="link-btn btn-disabled">Demo coming soon</span>}
                 </div>
               </div>
             ))}
@@ -244,9 +273,8 @@ function App() {
             <div className="dashboard-preview">
               <div className="dashboard-placeholder">
                 <p className="placeholder-text">📊</p>
-                <p className="placeholder-message">{portfolioData.dataStorytelling.status}</p>
                 <p className="placeholder-detail">
-                  Tableau and Power BI dashboards with synthetic data coming soon
+                  {portfolioData.dataStorytelling.distinction}
                 </p>
               </div>
             </div>
@@ -304,6 +332,9 @@ function App() {
                   </div>
                 ))}
               </div>
+              <p className="assistant-applications">
+                Cindy Bakes is the proof of concept. The same approach can be adapted for {portfolioData.aiAssistant.applications.join(', ')}.
+              </p>
             </div>
           </div>
         </div>
@@ -330,16 +361,6 @@ function App() {
               </div>
             </div>
 
-            <div className="stats-section">
-              <div className="stats-grid">
-                {portfolioData.about.stats.map((stat, idx) => (
-                  <div key={idx} className="stat-item">
-                    <div className="stat-value">{stat.value}</div>
-                    <div className="stat-label">{stat.label}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -403,8 +424,8 @@ function App() {
       {/* Footer */}
       <footer className="footer">
         <div className="container">
-          <p>&copy; 2026. Digital Solutions Portfolio. All rights reserved.</p>
-          <p className="footer-subtitle">Professional digital, AI and analytics solutions</p>
+          <p>&copy; 2026 Sammy Macharia. All rights reserved.</p>
+          <p className="footer-subtitle">Practical digital, AI and data solutions for businesses</p>
         </div>
       </footer>
     </>
