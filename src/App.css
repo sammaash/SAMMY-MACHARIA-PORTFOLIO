@@ -766,6 +766,14 @@ section {
   font-size: 14px;
 }
 
+.message-customer .message-content p {
+  color: #ffffff;
+}
+
+.message-assistant .message-content p {
+  color: var(--text-dark);
+}
+
 .assistant-progression h3 {
   margin-bottom: 30px;
 }
