@@ -229,7 +229,7 @@ export const portfolioData = {
   contact: {
     headline: "Have a business problem you'd like to solve?",
     subheading: "Let's talk.",
-    email: 'your.email@example.com',
+    email: 'hello@sammymacharia.com',
     phone: '+254723595334',
     linkedin: 'https://www.linkedin.com/in/sammy-macharia-03805114a/',
     github: 'https://github.com/sammaash',
