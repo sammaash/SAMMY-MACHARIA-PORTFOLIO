@@ -16,30 +16,30 @@ export const portfolioData = {
   services: [
     {
       id: 'ai-automation',
-      title: 'AI Automation',
+      title: 'What is AI Automation for Small Businesses and How Does It Work?',
       description:
-        'Automate repetitive customer enquiries, answer common questions and turn conversations into structured business leads.',
+        'AI Automation answers repetitive customer questions 24/7, captures enquiries as structured leads, and connects to WhatsApp and your database automatically. Instead of manually replying to "What are your prices?" 20 times a day, an AI assistant trained on your business content answers instantly and asks for the customer\'s name and contact to create an order.',
       icon: '🤖',
     },
     {
       id: 'data-storytelling',
-      title: 'Data Storytelling',
+      title: 'How Do You Turn Business Data Into Interactive Dashboards That Tell a Story?',
       description:
-        'Turn business data into interactive dashboards and visual stories that help decision-makers understand what is happening and what matters.',
+        'A dashboard reports measures. Data storytelling gives those measures context, focus, and a clear decision. I build interactive dashboards in Python that help Nairobi and global business owners understand performance, identify trends, and focus on what matters - from Executive Dashboards to Financial Performance and Sales & Operations.',
       icon: '📊',
     },
     {
       id: 'data-analytics',
-      title: 'Data Analytics & Machine Learning',
+      title: 'How Can Data Analytics and Machine Learning Predict Customer Churn and Risk?',
       description:
-        'Use data to uncover patterns, identify risks, predict outcomes and support better decisions.',
+        'I use Python, machine learning, and predictive analytics to uncover patterns in your business data, identify customers at risk of churn, segment customers by buying behaviour, and predict outcomes to support better decisions. Projects include Under-5 Mortality Risk Prediction, Customer Segmentation & Recommendation System, and Customer Churn Prediction.',
       icon: '📈',
     },
     {
       id: 'digital-solutions',
-      title: 'Digital Solutions',
+      title: 'Who Builds Professional Business Websites With AI and Database Integration in Kenya?',
       description:
-        'Build professional websites, databases and digital systems around real business needs.',
+        'I build professional, responsive business websites that are more than brochures - they are digital systems built around how your team actually works. Each website includes database integration, enquiry workflows, OpenAI integration, and deployment on Railway with persistent storage, like the system built for Cindy Bakes Delights in Nairobi.',
       icon: '💻',
     },
   ],
@@ -225,8 +225,19 @@ export const portfolioData = {
 
   // About
   about: {
-    headline: 'Practical business solutions through AI, data and digital tools.',
-    bio: "I'm a technology and data practitioner focused on applying AI, analytics and digital tools to practical business problems. I work with businesses that need clearer customer experiences, more useful data and systems built around how their teams actually work.",
+    headline: 'Who is Sammy Macharia? AI Automation and Data Specialist in Nairobi, Kenya',
+    paragraphs: [
+      'I help small businesses turn repetitive work, scattered data and underperforming websites into practical digital systems that save time and support better decisions.',
+      'My work combines AI automation, data analytics, data storytelling and web development. I build customer assistants, lead-capture workflows, interactive dashboards and database-backed websites around the way a business actually operates.',
+      'Based in Nairobi, Kenya, I work with local and global businesses on focused projects typically priced between $300 and $600, starting with a clear business problem and a practical path to measurable value.',
+    ],
+    problems: [
+      'Customers ask the same questions repeatedly and enquiries are missed.',
+      'Your website looks good but does not capture or organize leads.',
+      'Business data exists, but it is difficult to interpret or act on.',
+      'Your team spends time on manual processes that could be automated.',
+    ],
+    whyWorkWithMe: 'You get a focused solution tied to a real business outcome, clear communication throughout the project, and tools your team can understand and use after launch.',
     capabilities: [
       'AI Automation',
       'Data Analytics',
@@ -248,4 +259,39 @@ export const portfolioData = {
     linkedin: 'https://www.linkedin.com/in/sammy-macharia-03805114a/',
     github: 'https://github.com/sammaash',
   },
+
+  faq: [
+    {
+      question: 'What does AI automation do for a small business?',
+      answer: 'AI automation answers repetitive customer questions 24/7, captures enquiries as structured leads, and can connect conversations to WhatsApp, email or a database. It gives the owner more time while keeping customer response fast and consistent.',
+    },
+    {
+      question: 'How much does a small business AI automation project cost?',
+      answer: 'Focused projects typically cost $300-$600, depending on the workflow, integrations and data involved. A free 15-minute business audit helps identify the highest-value starting point before any proposal.',
+    },
+    {
+      question: 'Can you automate WhatsApp orders and customer enquiries?',
+      answer: 'Yes. I can design an enquiry flow that answers common questions, asks for customer details, captures order information and stores each enquiry in a structured database.',
+    },
+    {
+      question: 'What kind of dashboards do you build?',
+      answer: 'I build interactive Python dashboards for executive reporting, financial performance, sales and operations, customer analytics and KPI tracking. The goal is to make the next business decision clearer, not just display charts.',
+    },
+    {
+      question: 'Do you work with businesses outside Nairobi or Kenya?',
+      answer: 'Yes. I am based in Nairobi and work with businesses in Kenya and globally through remote collaboration.',
+    },
+    {
+      question: 'Can you connect a website to a database?',
+      answer: 'Yes. Websites can include enquiry workflows, persistent database storage, AI integrations and deployment configured around the business process.',
+    },
+    {
+      question: 'How long does a typical project take?',
+      answer: 'A focused website or automation workflow can often be delivered in two to four weeks, depending on the scope, content and integrations required.',
+    },
+    {
+      question: 'How do we start working together?',
+      answer: 'Book a free 15-minute business audit on WhatsApp or email hello@sammymacharia.com. We will discuss the current process, where time or leads are being lost, and the most practical next step.',
+    },
+  ],
 }

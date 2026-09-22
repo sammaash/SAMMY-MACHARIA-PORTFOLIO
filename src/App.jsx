@@ -134,8 +134,8 @@ function App() {
       <section className="services" id="services">
         <div className="container">
           <div className="section-header">
-            <h2>Services</h2>
-            <p className="section-subtitle">Four core areas of expertise</p>
+            <h2>What Services Does Sammy Macharia Offer for Small Businesses in Kenya and Globally?</h2>
+            <p className="section-subtitle">Four practical ways to save time, capture leads and make clearer decisions</p>
           </div>
 
           <div className="services-grid">
@@ -359,9 +359,15 @@ function App() {
           </div>
 
           <div className="about-content">
-            <p className="about-bio">{portfolioData.about.bio}</p>
+            {portfolioData.about.paragraphs.map((paragraph) => <p className="about-bio" key={paragraph}>{paragraph}</p>)}
 
             <div className="capabilities-section">
+              <h3>What problems I solve</h3>
+              <ul className="about-problems">
+                {portfolioData.about.problems.map((problem) => <li key={problem}>{problem}</li>)}
+              </ul>
+              <h3>Why work with me</h3>
+              <p className="about-why">{portfolioData.about.whyWorkWithMe}</p>
               <h3>Core Capabilities</h3>
               <div className="capabilities-grid">
                 {portfolioData.about.capabilities.map((capability, idx) => (
@@ -439,6 +445,24 @@ function App() {
                 </div>
               </a>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="faq" id="faq">
+        <div className="container faq-content">
+          <div className="section-header">
+            <h2>Frequently Asked Questions</h2>
+            <p className="section-subtitle">Clear answers about AI automation, data and digital systems</p>
+          </div>
+          <div className="faq-list">
+            {portfolioData.faq.map((item) => (
+              <details className="faq-item" key={item.question}>
+                <summary>{item.question}</summary>
+                <p>{item.answer}</p>
+              </details>
+            ))}
           </div>
         </div>
       </section>

@@ -896,6 +896,28 @@ section {
   margin-right: auto;
 }
 
+.about-problems {
+  display: grid;
+  gap: 12px;
+  list-style: none;
+  margin: 0 auto 40px;
+  max-width: 760px;
+  padding: 0;
+}
+
+.about-problems li {
+  background-color: #f9f9f9;
+  border-left: 4px solid var(--accent-color);
+  color: var(--text-dark);
+  padding: 14px 18px;
+}
+
+.about-why {
+  margin: 0 auto 40px;
+  max-width: 760px;
+  text-align: center;
+}
+
 .capabilities-section {
   margin-bottom: 50px;
 }
@@ -954,6 +976,36 @@ section {
 /* Contact Section */
 .contact {
   background-color: #f5f7fa;
+}
+
+.faq {
+  background-color: white;
+}
+
+.faq-content {
+  max-width: 900px;
+}
+
+.faq-list {
+  display: grid;
+  gap: 12px;
+}
+
+.faq-item {
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 18px 20px;
+}
+
+.faq-item summary {
+  color: var(--text-dark);
+  cursor: pointer;
+  font-weight: 700;
+  padding-right: 24px;
+}
+
+.faq-item p {
+  margin: 14px 0 0;
 }
 
 .contact-content {
