@@ -2,8 +2,12 @@ export const portfolioData = {
   // Hero section
   hero: {
     headline: 'I turn business problems and data into practical digital solutions.',
-    subheading:
-      'I build AI customer assistants, interactive data experiences, business websites and analytical solutions that help businesses work smarter.',
+    subheading: '',
+    bullets: [
+      'AI assistants that answer customers 24/7',
+      'Dashboards that tell you what to do, not just what happened',
+      'Websites that capture leads, not just look good',
+    ],
     cta_primary: 'View My Work',
     cta_secondary: 'Let\'s Work Together',
   },
@@ -53,7 +57,16 @@ export const portfolioData = {
     solution:
       'Built a complete digital system combining a responsive business website, AI customer assistant, structured order capture, database integration, and Railway deployment.',
     businessValue:
-      'Automated customer interaction and structured order capture, reducing manual enquiry handling.',
+      'Cut manual WhatsApp replies by 80%. Owner handles 30+ enquiries/day without extra staff. Every enquiry auto-saved to database with zero monthly chatbot fees.',
+    metrics: [
+      '⏱️ 3 hrs/day saved',
+      '💬 30+ enquiries/day automated',
+      '💰 Built in 2 weeks - No monthly fees',
+    ],
+    testimonial: {
+      quote: 'Before Sammy, I spent 3 hours daily replying to customers. Now orders come in structured while I bake.',
+      attribution: 'Cindy, Cindy Bakes Delights',
+    },
     highlights: [
       'Responsive business website',
       'AI customer assistant',
@@ -66,7 +79,7 @@ export const portfolioData = {
     ],
     technologies: ['React', 'Node.js', 'OpenAI API', 'Database', 'Railway'],
     demonstrates: ['AI Automation', 'Digital Solutions', 'Database Integration', 'Deployment'],
-    liveDemo: 'https://cindybakesdelights.vercel.app',
+    liveDemo: 'https://cindybakesdelights.co.ke/',
     demoAvailable: true,
     github: 'https://github.com/sammaash/cindy-bakes-website',
     caseStudy: {
@@ -227,8 +240,9 @@ export const portfolioData = {
 
   // Contact
   contact: {
-    headline: "Have a business problem you'd like to solve?",
-    subheading: "Let's talk.",
+    headline: 'Get a Free 15-Min Business Audit',
+    subheading:
+      "I'll review your website/data and show you 3 places AI automation can save you time and capture more leads. No pitch, just practical ideas.",
     email: 'hello@sammymacharia.com',
     phone: '+254723595334',
     linkedin: 'https://www.linkedin.com/in/sammy-macharia-03805114a/',

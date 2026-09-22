@@ -244,6 +244,31 @@ p {
   margin-right: auto;
 }
 
+.hero-bullets {
+  display: grid;
+  gap: 10px;
+  list-style: none;
+  margin: 0 auto 40px;
+  max-width: 620px;
+  padding: 0;
+  text-align: left;
+}
+
+.hero-bullets li {
+  color: var(--text-dark);
+  font-size: 1.05rem;
+  padding-left: 28px;
+  position: relative;
+}
+
+.hero-bullets li::before {
+  color: var(--accent-color);
+  content: '✓';
+  font-weight: 700;
+  left: 0;
+  position: absolute;
+}
+
 .hero-ctas {
   display: flex;
   gap: 20px;
@@ -353,6 +378,43 @@ section {
 
 .project-highlights {
   margin-bottom: 30px;
+}
+
+.metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: -10px 0 30px;
+}
+
+.metrics span {
+  background-color: #f9f9f9;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  color: var(--text-dark);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 12px;
+}
+
+.project-testimonial {
+  background-color: #f9f9f9;
+  border-left: 4px solid var(--accent-color);
+  margin: 0;
+  padding: 18px 20px;
+}
+
+.project-testimonial p {
+  color: var(--text-dark);
+  font-style: italic;
+  margin: 0 0 8px;
+}
+
+.project-testimonial cite {
+  color: var(--text-light);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
 }
 
 .project-highlights h4 {
@@ -899,6 +961,14 @@ section {
   margin: 0 auto;
 }
 
+.contact-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  margin-bottom: 35px;
+}
+
 .contact-info {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -1048,6 +1118,10 @@ section {
     flex-direction: column;
   }
 
+  .hero-bullets {
+    text-align: left;
+  }
+
   .project-case-study {
     grid-template-columns: 1fr;
   }
@@ -1061,6 +1135,15 @@ section {
   }
 
   .project-ctas .btn {
+    width: 100%;
+  }
+
+  .contact-ctas {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .contact-ctas .btn {
     width: 100%;
   }
 

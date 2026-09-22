@@ -109,7 +109,9 @@ function App() {
         <div className="container">
           <div className="hero-content">
             <h1 className="hero-headline">{portfolioData.hero.headline}</h1>
-            <p className="hero-subheading">{portfolioData.hero.subheading}</p>
+            <ul className="hero-bullets">
+              {portfolioData.hero.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}
+            </ul>
             <div className="hero-ctas">
               <button
                 className="btn btn-primary"
@@ -117,12 +119,12 @@ function App() {
               >
                 {portfolioData.hero.cta_primary}
               </button>
-              <button
+              <a
                 className="btn btn-secondary"
-                onClick={() => scrollToSection('contact')}
+                href="https://wa.me/254723595334?text=Hi%20Sammy,%20I%20want%20a%20free%2015-min%20audit%20for%20my%20business"
               >
                 {portfolioData.hero.cta_secondary}
-              </button>
+              </a>
             </div>
           </div>
         </div>
@@ -176,6 +178,11 @@ function App() {
                   <h4>Business Value</h4>
                   <p>{portfolioData.featuredProject.businessValue}</p>
                 </div>
+
+                <blockquote className="project-testimonial">
+                  <p>"{portfolioData.featuredProject.testimonial.quote}"</p>
+                  <cite>— {portfolioData.featuredProject.testimonial.attribution}</cite>
+                </blockquote>
               </div>
 
               <div className="project-highlights">
@@ -185,6 +192,10 @@ function App() {
                     <li key={idx}>{highlight}</li>
                   ))}
                 </ul>
+              </div>
+
+              <div className="metrics" aria-label="Project results">
+                {portfolioData.featuredProject.metrics.map((metric) => <span key={metric}>{metric}</span>)}
               </div>
 
               <div className="project-demonstrates">
@@ -374,6 +385,17 @@ function App() {
           </div>
 
           <div className="contact-content">
+            <div className="contact-ctas">
+              <a
+                className="btn btn-primary"
+                href="https://wa.me/254723595334?text=Hi%20Sammy,%20I%20want%20a%20free%2015-min%20audit%20for%20my%20business"
+              >
+                Book Free Audit on WhatsApp
+              </a>
+              <a className="btn btn-secondary" href="mailto:hello@sammymacharia.com">
+                Email me: hello@sammymacharia.com
+              </a>
+            </div>
             <div className="contact-info">
               <a href={`mailto:${portfolioData.contact.email}`} className="contact-link">
                 <span className="contact-icon">✉</span>
