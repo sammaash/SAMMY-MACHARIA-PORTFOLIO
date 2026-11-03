@@ -16,35 +16,31 @@ export const legal = {
   },
 
   privacy: {
-    title: 'Privacy Notice',
+    title: 'Privacy Policy',
+    operatorName: 'SAMMA-COMPETENCY CONSULTANCY',
+    lastUpdated: 'Last updated: 4 November 2026',
     lead:
-      'This notice explains who operates this website, what personal information may be processed when you use it, and how you can ask questions or make requests about that information.',
+      'SAMMA-COMPETENCY CONSULTANCY respects customer privacy. This policy explains how we handle customer enquiries and the information you choose to share with us.',
     sections: [
       {
         heading: 'Who operates this website',
         paragraphs: [
-          'This website is operated by Sammy Macharia, an individual technology and data analytics professional based in Nairobi, Kenya. Samma Automations, the WhatsApp enquiry automation product described on this website, is developed and offered by Sammy Macharia as an individual. It is not presented as a registered company or separate legal entity.',
+          'This portfolio presents SAMMA-COMPETENCY CONSULTANCY, a BRS-registered business (BN-RRSK3Q6L) owned by Sammy Kinyanjui Macharia, based in Nairobi, Kenya, and the parent business behind Samma Automations and competency consultancy services.',
         ],
       },
       {
-        heading: 'What information this website collects',
+        heading: 'How we handle customer enquiries',
         paragraphs: [
-          'This website itself does not use accounts, cookies for tracking, analytics scripts, or embedded third-party trackers. It is a static informational site.',
-          'If you contact me using the email address, phone number or WhatsApp links shown on this website, the information you choose to share (such as your name, contact details and the content of your message) is processed in order to respond to you.',
-          'If you view the live demonstration projects linked from this website (such as the Cindy Bakes Delights website), separate terms and practices of those websites apply.',
+          'We collect information you provide when you contact us through WhatsApp, Instagram, TikTok, email or the website, such as your name, contact details, service preferences and any message content needed to respond to your enquiry.',
+          'This information is used only to respond to enquiries, answer questions, discuss custom automation or consultancy requests, and provide the service you ask for. We do not sell customer information. We do not keep payment details on this website.',
+          'If you contact us through WhatsApp, please remember that messages may be stored by Meta and/or the phone provider. Please do not share sensitive personal information in public channels or messages unless necessary for your requested service.',
         ],
       },
       {
-        heading: 'Samma Automations enquiries and conversations',
+        heading: 'This website and third-party services',
         paragraphs: [
-          'Samma Automations is in development and testing. Where the product is used in a demonstration or early pilot, conversation content, the sender’s name and phone number, and enquiry details are stored so that the enquiry can be answered and kept as a business record.',
-          'WhatsApp is operated by Meta. Messages sent to a business number using the WhatsApp Business Platform are processed by Meta under its own terms and privacy policy. Samma Automations is an independent project and is not affiliated with, endorsed by, or sponsored by Meta or WhatsApp.',
-        ],
-      },
-      {
-        heading: 'How information is used',
-        paragraphs: [
-          'Information from enquiries is used to respond to you, to provide any service you ask about or agree to, and to keep ordinary business records of that correspondence. Enquiry information is not sold, rented or used for unrelated advertising.',
+          'This portfolio website provides information and contact links; it does not require an account or collect payment details. Enquiries sent through linked messaging or email services are handled through those services.',
+          'WhatsApp, Instagram and other external platforms have their own privacy policies. If you view linked client projects or demonstrations, such as Cindy Bakes Delights, the separate privacy practices of those websites apply.',
         ],
       },
       {
@@ -67,9 +63,9 @@ export const legal = {
         ],
       },
       {
-        heading: 'Changes to this notice',
+        heading: 'Changes to this policy',
         paragraphs: [
-          'This notice may be updated as the service develops. The date of the last review is shown at the top of this page.',
+          'This policy may be updated as the service develops. The date of the last update is shown at the top of this page.',
         ],
       },
     ],

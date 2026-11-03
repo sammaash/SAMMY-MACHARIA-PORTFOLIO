@@ -3,6 +3,8 @@ import './App.css'
 import { portfolioData } from './data/portfolio'
 import { sammaAutomations } from './data/sammaAutomations'
 import { legal } from './data/legal'
+import { sammaCompetency } from './data/sammaCompetency'
+import { SammaCompetencyCard } from './components/products/SammaCompetencyCard'
 
 const DEMO_WHATSAPP_LINK =
   'https://wa.me/254723595334?text=Hi%20Sammy,%20I%27d%20like%20a%20demonstration%20of%20Samma%20Automations'
@@ -15,7 +17,7 @@ const DEFAULT_TITLE =
 
 const PAGE_TITLES = {
   '#/samma-automations': 'Samma Automations | WhatsApp Enquiry Automation - Sammy Macharia',
-  '#/privacy': 'Privacy Notice | Sammy Macharia',
+  '#/privacy': 'Privacy Policy | SAMMA-COMPETENCY CONSULTANCY',
   '#/terms': 'Website and Service Terms | Sammy Macharia',
 }
 
@@ -308,7 +310,7 @@ function LegalPage({ content, crossLink }) {
         <button className="back-link" onClick={() => { window.location.hash = 'home' }}>← Back to portfolio</button>
         <h1>{content.title}</h1>
         <p className="case-study-lead">{content.lead}</p>
-        <p className="legal-updated">{legal.operator.lastUpdated}</p>
+        <p className="legal-updated">{content.lastUpdated || legal.operator.lastUpdated}</p>
         <div className="legal-sections">
           {content.sections.map((section) => (
             <section className="legal-section" key={section.heading}>
@@ -318,7 +320,7 @@ function LegalPage({ content, crossLink }) {
           ))}
         </div>
         <p className="legal-operator">
-          Operated by {legal.operator.name}, {legal.operator.location}. Contact:{' '}
+          Operated by {content.operatorName || legal.operator.name}, {legal.operator.location}. Contact:{' '}
           <a href={`mailto:${legal.operator.email}`}>{legal.operator.email}</a>
         </p>
         <div className="legal-cross-links">{crossLink}</div>
@@ -346,7 +348,7 @@ function TermsPage() {
       content={legal.terms}
       crossLink={
         <button className="text-link" onClick={() => { window.location.hash = '/privacy' }}>
-          View the Privacy Notice →
+          View the Privacy Policy →
         </button>
       }
     />
@@ -356,6 +358,7 @@ function TermsPage() {
 function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [route, setRoute] = useState(() => window.location.hash)
+  const pathname = window.location.pathname.replace(/\/$/, '')
 
   const caseStudyId = route.startsWith('#/work/') ? route.replace('#/work/', '') : null
 
@@ -369,14 +372,27 @@ function App() {
   }, [])
 
   useEffect(() => {
-    if (PAGE_TITLES[route]) {
+    const isConsultancy = pathname === '/products/samma-competency-consultancy' ||
+      route === '#/samma-automations' || route === '#/products/samma-competency-consultancy'
+    const description = document.querySelector('meta[name="description"]')
+    const originalDescription = description?.content
+    if (isConsultancy) {
+      document.title = sammaCompetency.pageTitle
+      if (description) description.content = sammaCompetency.metaDescription
+    } else if (pathname === '/products' || route === '#/products') {
+      document.title = 'Products | Sammy Macharia'
+      if (description) description.content = sammaCompetency.metaDescription
+    } else if (PAGE_TITLES[route]) {
       document.title = PAGE_TITLES[route]
     } else if (activeProject) {
       document.title = `${activeProject.title} | Sammy Macharia`
     } else {
       document.title = DEFAULT_TITLE
     }
-  }, [route, activeProject])
+    return () => {
+      if (description) description.content = originalDescription
+    }
+  }, [route, activeProject, pathname])
 
   if (route === '#/promo') {
     return <PromoVideo />
@@ -390,8 +406,13 @@ function App() {
     return <EnterpriseStatusVideo />
   }
 
-  if (route === '#/samma-automations') {
-    return <SammaAutomationsPage />
+  if (pathname === '/products/samma-competency-consultancy' ||
+    route === '#/samma-automations' || route === '#/products/samma-competency-consultancy') {
+    return <main className="samma-intro"><div className="container"><a href="/#products" className="text-link">Back to products</a><SammaCompetencyCard detailed /></div></main>
+  }
+
+  if (pathname === '/products' || route === '#/products') {
+    return <main className="samma-intro"><div className="container"><a href="/#home" className="text-link">Back to portfolio</a><h1>Products</h1><SammaCompetencyCard /></div></main>
   }
 
   if (route === '#/privacy') {
@@ -421,7 +442,7 @@ function App() {
 
   const goToSammaAutomations = () => {
     setMobileMenuOpen(false)
-    window.location.hash = '/samma-automations'
+    window.location.assign('/products/samma-competency-consultancy')
     window.scrollTo({ top: 0, behavior: 'auto' })
   }
 
@@ -490,7 +511,7 @@ function App() {
               Work
             </button>
             <button onClick={goToSammaAutomations} className="nav-link">
-              Samma Automations
+              Samma Consultancy
             </button>
             <button onClick={() => scrollToSection('services')} className="nav-link">
               Services
@@ -531,34 +552,10 @@ function App() {
         </div>
       </section>
 
-      {/* Samma Automations intro */}
-      <section className="samma-intro" id="samma-intro">
+      {/* Featured business */}
+      <section className="samma-intro" id="products">
         <div className="container">
-          <div className="section-header">
-            <p className="section-eyebrow">{sammaAutomations.intro.eyebrow}</p>
-            <h2>{sammaAutomations.intro.headline}</h2>
-            <p className="section-subtitle">{sammaAutomations.intro.description}</p>
-          </div>
-
-          <div className="samma-highlights">
-            {sammaAutomations.intro.highlights.map((highlight) => (
-              <div className="samma-highlight" key={highlight.title}>
-                <h3>{highlight.title}</h3>
-                <p>{highlight.text}</p>
-              </div>
-            ))}
-          </div>
-
-          <p className="samma-status-note">{sammaAutomations.intro.statusNote}</p>
-
-          <div className="hero-ctas samma-intro-ctas">
-            <button className="btn btn-primary" onClick={goToSammaAutomations}>
-              {sammaAutomations.intro.ctaPrimary}
-            </button>
-            <a className="btn btn-secondary" href={DEMO_WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
-              {sammaAutomations.intro.ctaSecondary}
-            </a>
-          </div>
+          <SammaCompetencyCard />
         </div>
       </section>
 
@@ -794,10 +791,10 @@ function App() {
             {portfolioData.about.paragraphs.map((paragraph) => <p className="about-bio" key={paragraph}>{paragraph}</p>)}
 
             <div className="about-samma">
-              <h3>{sammaAutomations.about.title}</h3>
-              {sammaAutomations.about.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+              <h3>{sammaCompetency.name}</h3>
+              <p>Parent company for Samma Automations, competency consultancy services and WhatsApp Cloud API integration.</p>
               <button className="text-link" onClick={goToSammaAutomations}>
-                {sammaAutomations.about.cta} →
+                View business registration and services →
               </button>
             </div>
 
@@ -843,7 +840,7 @@ function App() {
               </a>
             </div>
             <p className="contact-note">
-              Interested in <strong>Samma Automations</strong>, the WhatsApp enquiry automation product?{' '}
+              Interested in <strong>Samma Consultancy</strong>, the parent business behind Samma Automations?{' '}
               <button className="text-link" onClick={goToSammaAutomations}>
                 Read about it and request a demonstration →
               </button>
@@ -917,13 +914,13 @@ function App() {
       <footer className="footer">
         <div className="container">
           <p>&copy; 2026 Sammy Macharia. All rights reserved.</p>
-          <p className="footer-subtitle">Practical digital, AI and data solutions for businesses · Samma Automations, a WhatsApp automation product in development by Sammy Macharia</p>
+          <p className="footer-subtitle">Practical digital, AI and data solutions for businesses · SAMMA-COMPETENCY CONSULTANCY · BN-RRSK3Q6L</p>
           <nav className="footer-links" aria-label="Footer navigation">
-            <button className="footer-link" onClick={goToSammaAutomations}>Samma Automations</button>
+            <button className="footer-link" onClick={goToSammaAutomations}>Samma Consultancy</button>
             <button className="footer-link" onClick={() => scrollToSection('featured')}>Work</button>
             <button className="footer-link" onClick={() => scrollToSection('about')}>About</button>
             <button className="footer-link" onClick={() => scrollToSection('contact')}>Contact</button>
-            <button className="footer-link" onClick={() => goToLegalPage('/privacy')}>Privacy Notice</button>
+            <button className="footer-link" onClick={() => goToLegalPage('/privacy')}>Privacy Policy</button>
             <button className="footer-link" onClick={() => goToLegalPage('/terms')}>Terms</button>
           </nav>
         </div>
